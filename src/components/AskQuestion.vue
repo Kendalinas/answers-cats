@@ -27,6 +27,8 @@
       <form v-on:submit.prevent="Cats">
       <p>Now, do you want to see a cat?<input type="text"><button type="submit">Submit</button></p>
     </form>
+  </p>
+</div>
 
 </template>
 

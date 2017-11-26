@@ -5,34 +5,35 @@
       &bull;
       <router-link v-bind:to="{ name: 'Cats' }">Cats</router-link>
     </p>
-    <form v-on:submit.prevent="findWords">
-      <p>Ask a question, any question! <input type="text"><button type="submit">Search</button></p>
+    <form v-on:submit.prevent="AskQuestion">
+      <p>Ask a question, any question! <input type="text"><button type="submit">Submit</button></p>
     </form>
     
     <ul v-if="results && results.length > 0" class="results">
       <li v-for="item in results" class="item">
         <p><strong>{{ item.word }}</strong></p>
-        <p>{{ item.score }}</p>
       </li>
     </ul>
 
-    <div v-else-if="results && results.length === 0" class="no-results">
-      <h2>No Words Found</h2>
-      <p>Please adjust your search to find more words.</p>
-    </div>
-
-    <ul v-if="errors.length > 0" class="errors">
+    <ul v-else-if="errors.length > 0" class="errors">
       <li v-for="error in errors">
         {{ error.message }}
       </li>
     </ul>
   </div>
+  
+  <div class="see-cat">
+    <p>
+      <form v-on:submit.prevent="Cats">
+      <p>Now, do you want to see a cat?<input type="text"><button type="submit">Submit</button></p>
+    </form>
+
 </template>
 
 <script>
 import axios from 'axios';
 export default {
-  name: 'RhymePreceding',
+  name: 'AskQuestion',
   data () {
     return {
       results: null,
@@ -45,8 +46,7 @@ export default {
     AskQuestion: function() {
       axios.get('https://yesno.wtf/', {
         params: {
-          ml: this.phrase,
-          rel_bgb: this.rhyme
+          
         }
       })
       .then( response => {

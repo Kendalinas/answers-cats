@@ -1,12 +1,12 @@
 <template>
-  <div class="rhyme-preceding">
+  <div class="cats">
     <p>
-      <router-link v-bind:to="{ name: 'RhymePreceding' }">RhymePreceding</router-link>
+      <router-link v-bind:to="{ name: 'AskQuestion' }">Ask Question</router-link>
       &bull;
-      <router-link v-bind:to="{ name: 'Rhymesaurus' }">Rhymesaurus</router-link>
+      <router-link v-bind:to="{ name: 'Cats' }">Cats</router-link>
     </p>
-    <form v-on:submit.prevent="findWords">
-      <p>Find rhymes for <input type="text" v-model="rhyme"> using a word that commonly precedes <input type="text" v-model="phrase"> <button type="submit">Search</button></p>
+    <form v-on:submit.prevent="findCats">
+      <p>Find pictures of cats<input type="text"><button type="submit">Search</button></p>
     </form>
     
     <ul v-if="results && results.length > 0" class="results">
@@ -16,12 +16,7 @@
       </li>
     </ul>
 
-    <div v-else-if="results && results.length === 0" class="no-results">
-      <h2>No Words Found</h2>
-      <p>Please adjust your search to find more words.</p>
-    </div>
-
-    <ul v-if="errors.length > 0" class="errors">
+    <ul v-else-if="errors.length > 0" class="errors">
       <li v-for="error in errors">
         {{ error.message }}
       </li>
@@ -32,7 +27,7 @@
 <script>
 import axios from 'axios';
 export default {
-  name: 'RhymePreceding',
+  name: 'findCats',
   data () {
     return {
       results: null,
@@ -42,11 +37,10 @@ export default {
     }
   },
   methods: {
-    findWords: function() {
-      axios.get('https://api.datamuse.com/words', {
+    findCats: function() {
+      axios.get('https://www.flickr.com/services/api/', {
         params: {
-          ml: this.phrase,
-          rel_bgb: this.rhyme
+          APPID: 'fde5ff5837b1a0218a974201d0272c29'
         }
       })
       .then( response => {

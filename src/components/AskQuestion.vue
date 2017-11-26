@@ -9,8 +9,8 @@
       <p>Ask a question, any question! <input type="text"><button type="submit">Submit</button></p>
     </form>
     
-    <ul v-if="results && results.length > 0" class="results">
-      <li v-for="item in results" class="item">
+    <ul v-if="prediction" class="prediction">
+      <li v-for="item in prediction" class="item">
         <p><strong>{{ item.word }}</strong></p>
       </li>
     </ul>
@@ -36,21 +36,19 @@ export default {
   name: 'AskQuestion',
   data () {
     return {
-      results: null,
+      prediction: null,
       errors: [],
-      phrase: '',
-      rhyme: ''
     }
   },
   methods: {
     AskQuestion: function() {
-      axios.get('https://yesno.wtf/', {
+      axios.get('https://yesno.wtf/api', {
         params: {
           
         }
       })
       .then( response => {
-        this.results = response.data;
+        this.prediction = response.data;
       })
       .catch( error => {
         this.errors.push(error);

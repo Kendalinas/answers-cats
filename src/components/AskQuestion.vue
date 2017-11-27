@@ -6,12 +6,12 @@
       <router-link v-bind:to="{ name: 'Cats' }">Cats</router-link>
     </p>
     <form v-on:submit.prevent="AskQuestion">
-      <p>Ask a question, any question! <input type="text"><button type="submit">Submit for Answer</button></p>
+      <p>Ask a question, any question! <input type="text"><button type="submit"> Submit for Answer </button></p>
     </form>
     
     <ul v-if="prediction" class="prediction">
       <li v-for="item in prediction" class="item">
-        <p><strong>{{ item.word }}</strong></p>
+        <p>{{ prediction.answer }}, {{ prediction.image }}</p>
       </li>
     </ul>
 
@@ -42,11 +42,7 @@ export default {
   },
   methods: {
     AskQuestion: function() {
-      axios.get('https://yesno.wtf/api', {
-        params: {
-          
-        }
-      })
+      axios.get('https://yesno.wtf/api')
       .then( response => {
         this.prediction = response.data;
       })
@@ -61,9 +57,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.rhyme-preceding {
-  font-size: 1.4rem;
-}
+
 input[type="text"]{
   border-top: none;
   border-left: none;

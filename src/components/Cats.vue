@@ -12,8 +12,7 @@
     
     <ul v-if="results && results.length > 0" class="results">
       <li v-for="item in results" class="item">
-        <p><strong>{{ item.word }}</strong></p>
-        <p>{{ item.score }}</p>
+        <p>{{ item.image }}</p>
       </li>
     </ul>
 
@@ -39,6 +38,7 @@ export default {
     findCats: function() {
       axios.get('https://www.flickr.com/services/api/', {
         params: {
+          
           APPID: 'fde5ff5837b1a0218a974201d0272c29'
         }
       })

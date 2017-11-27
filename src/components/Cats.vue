@@ -6,7 +6,8 @@
       <router-link v-bind:to="{ name: 'Cats' }">Cats</router-link>
     </p>
     <form v-on:submit.prevent="findCats">
-      <p>Find pictures of cats<input type="text"><button type="submit">Search</button></p>
+      <p>Click submit to find pictures of cats</p>
+        <p><button type="submit">Submit</button></p>
     </form>
     
     <ul v-if="results && results.length > 0" class="results">
@@ -32,8 +33,6 @@ export default {
     return {
       results: null,
       errors: [],
-      phrase: '',
-      rhyme: ''
     }
   },
   methods: {

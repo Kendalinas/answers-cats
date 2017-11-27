@@ -6,7 +6,7 @@
       <router-link v-bind:to="{ name: 'Cats' }">Cats</router-link>
     </p>
     <form v-on:submit.prevent="AskQuestion">
-      <p>Ask a question, any question! <input type="text"><button type="submit">Submit</button></p>
+      <p>Ask a question, any question! <input type="text"><button type="submit">Submit for Answer</button></p>
     </form>
     
     <ul v-if="prediction" class="prediction">
@@ -20,16 +20,14 @@
         {{ error.message }}
       </li>
     </ul>
-  </div>
-  
-  <div class="see-cat">
+    <div class="see-cat">
     <p>
       <form v-on:submit.prevent="Cats">
-      <p>Now, do you want to see a cat?<input type="text"><button type="submit">Submit</button></p>
-    </form>
-  </p>
+      <p>Now, do you want to see a cat? <button type="submit">Yes</button> <button type="submit">No</button></p>
+      </form>
+    </p>
+  </div>
 </div>
-
 </template>
 
 <script>

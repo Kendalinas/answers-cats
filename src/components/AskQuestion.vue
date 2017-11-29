@@ -71,7 +71,7 @@ button{
   background: #f07851;
   padding: 0.5rem;
   font-weight: 300;
-  color: #33303e;
+  color: #eef0e9;
   border: none;
   cursor: pointer;
   font-size: 1.4rem;

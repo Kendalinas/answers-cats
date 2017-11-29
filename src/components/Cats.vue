@@ -13,7 +13,7 @@
     <ul v-if="results && results.length > 0" class="results">
       <div>
         <spinner v-if="showSpinner"></spinner>
-        <p>{{ results[0].url_m }},  <img :src="results[0].url_m"></p>
+        <p><img :src="results[0].url_m"></p>
       </div>
     </ul>
 

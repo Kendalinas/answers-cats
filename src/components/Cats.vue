@@ -12,7 +12,8 @@
     
     <ul v-if="results && results.length > 0" class="results">
       <div>
-        <p>{{ results[0].url_l }},  <img :src="results[0].url_l"></p>
+        <spinner v-if="showSpinner"></spinner>
+        <p>{{ results[0].url_m }},  <img :src="results[0].url_m"></p>
       </div>
     </ul>
 
@@ -26,16 +27,23 @@
 
 <script>
 import axios from 'axios';
+import CubeSpinner from '@/components/CubeSpinner';
+
 export default {
   name: 'findCats',
+  components: {
+    spinner: CubeSpinner
+  },
   data () {
     return {
       results: null,
       errors: [],
+      showSpinner: false,
     }
   },
   methods: {
     findCats: function() {
+      this.showSpinner = true;
       axios.get('https://crossorigin.me/https://api.flickr.com/services/rest/', {
         params: {
           method: "flickr.photos.search",
@@ -43,18 +51,19 @@ export default {
           api_key: 'fde5ff5837b1a0218a974201d0272c29',
           format: 'json',
           nojsoncallback: "1",
-          extras: "url_l"
+          extras: "url_m"
         }
       })
       .then( response => {
+        this.showSpinner = false;
         this.results = response.data.photos.photo;
       })
       .catch( error => {
+        this.showSpinner = false;
         this.errors.push(error);
       })
     }
   }
-  
 }
 </script>
 

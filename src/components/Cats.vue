@@ -11,12 +11,12 @@
     </form>
     
     <ul v-if="results && results.length > 0" class="results">
-      <li v-for="item in results" class="item">
-        <p>{{ item.image }}</p>
-      </li>
+      <div>
+        <p>{{ results[0].url_l }},  <img :src="results[0].url_l"></p>
+      </div>
     </ul>
 
-    <ul v-else-if="errors.length > 0" class="errors">
+    <ul v-else="errors.length > 0" class="errors">
       <li v-for="error in errors">
         {{ error.message }}
       </li>
@@ -36,14 +36,18 @@ export default {
   },
   methods: {
     findCats: function() {
-      axios.get('https://www.flickr.com/services/api/', {
+      axios.get('https://crossorigin.me/https://api.flickr.com/services/rest/', {
         params: {
-          
-          APPID: 'fde5ff5837b1a0218a974201d0272c29'
+          method: "flickr.photos.search",
+          tags: "cat",
+          api_key: 'fde5ff5837b1a0218a974201d0272c29',
+          format: 'json',
+          nojsoncallback: "1",
+          extras: "url_l"
         }
       })
       .then( response => {
-        this.results = response.data;
+        this.results = response.data.photos.photo;
       })
       .catch( error => {
         this.errors.push(error);

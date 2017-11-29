@@ -21,7 +21,7 @@
     <div class="see-cat">
     <p>
       <form v-on:submit.prevent="Cats">
-      <p>Now, do you want to see a cat? <button type="submit">Yes</button> <button type="submit">No</button></p>
+      <p>Now, do you want to see a cat? <router-link v-bind:to="{ name: 'Cats' }" tag="button">Yes</router-link> <router-link to="/" tag="button">No</router-link></p>
       </form>
     </p>
   </div>

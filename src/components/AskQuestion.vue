@@ -6,14 +6,12 @@
       <router-link v-bind:to="{ name: 'Cats' }">Cats</router-link>
     </p>
     <form v-on:submit.prevent="AskQuestion">
-      <p>Ask a question, any question! <input type="text"><button type="submit"> Submit for Answer </button></p>
+      <p>Ask a question, any question! <input type="text"> <button type="submit"> Submit for Answer </button></p>
     </form>
     
-    <ul v-if="prediction" class="prediction">
-      <li v-for="item in prediction" class="item">
-        <p>{{ prediction.answer }}, {{ prediction.image }}</p>
-      </li>
-    </ul>
+    <div v-if="prediction" class="prediction">
+        <p>{{ prediction.answer }}, <img :src="prediction.image"></p>
+    </div>
 
     <ul v-else-if="errors.length > 0" class="errors">
       <li v-for="error in errors">
@@ -65,22 +63,23 @@ input[type="text"]{
   border-bottom: 1px solid #333;
   width: 300px;
   font-size: 1.4rem;
-  color: #2c3e50;
+  color: #eef0e9;
   font-weight: 300;
-  background: rgba(0,0,0,0.02);
+  background: #937b7a;
   padding: 0.5rem;
 }
 button{
-  background: #333;
+  background: #f07851;
   padding: 0.5rem;
   font-weight: 300;
-  color: #fff;
+  color: #33303e;
   border: none;
   cursor: pointer;
   font-size: 1.4rem;
 }
 h1, h2 {
   font-weight: normal;
+  color: #a2555b;
 }
 ul.results {
   list-style-type: none;

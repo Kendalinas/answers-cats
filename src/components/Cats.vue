@@ -56,26 +56,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.rhyme-preceding {
-  font-size: 1.4rem;
-}
-input[type="text"]{
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 1px solid #333;
-  width: 300px;
-  font-size: 1.4rem;
-  color: #2c3e50;
-  font-weight: 300;
-  background: rgba(0,0,0,0.02);
-  padding: 0.5rem;
-}
+
 button{
-  background: #333;
+  background: #f07851;
   padding: 0.5rem;
   font-weight: 300;
-  color: #fff;
+  color: #eef0e9;
   border: none;
   cursor: pointer;
   font-size: 1.4rem;

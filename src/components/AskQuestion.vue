@@ -6,7 +6,7 @@
       <router-link v-bind:to="{ name: 'Cats' }">Cats</router-link>
     </p>
     <form v-on:submit.prevent="AskQuestion">
-      <p>Ask a question, any question! <input type="text"> <button type="submit"> Submit for Answer </button></p>
+      <p>Ask a (yes/no) question, any (yes/no) question! <input type="text"> <button type="submit"> Submit for Answer </button></p>
     </form>
     
     <div v-if="prediction" class="prediction">

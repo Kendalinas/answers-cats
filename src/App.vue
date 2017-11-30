@@ -20,5 +20,9 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   background-color: #eef0e9;
+  padding: 40px;
+}
+h1 {
+  color: #a2555b;
 }
 </style>

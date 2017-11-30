@@ -6,8 +6,8 @@
       <router-link v-bind:to="{ name: 'Cats' }">Cats</router-link>
     </p>
     <form v-on:submit.prevent="findCats">
-      <p>Click submit to find pictures of cats</p>
-        <p><button type="submit">Submit</button></p>
+      <p>Click Meow to find pictures of cats</p>
+        <p><button type="submit">Meow</button></p>
     </form>
     
     <ul v-if="results && results.length > 0" class="results">
